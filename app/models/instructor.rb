@@ -6,8 +6,10 @@ class Instructor
         @@all << self
     end
 
-    def pass_student(s,name)
-        t = BoatingTest.all.find{|x| x.student == s}
+    def pass_student(s,n)
+        t = BoatingTest.all.find{|x| 
+        x.student == s && x.name == n
+        }
         if t
             t.status = "passed"
             return t
@@ -16,8 +18,10 @@ class Instructor
         end
     end
 
-    def fail_student
-        t = BoatingTest.all.find{|x| x.student == s}
+    def fail_student(s,n)
+        t = BoatingTest.all.find{|x| 
+        x.student == s && x.name == n
+        }
         if t
             t.status = "failed"
             return t
